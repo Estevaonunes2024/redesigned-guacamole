@@ -68,3 +68,8 @@ starte o projeto no node,
 agora volte no cloudflare aponte o dominio e o subminio api.dominio...  para o ip do seu servidor 
 
 e pronto ;)
+
+
+
+
+ll
