@@ -1,0 +1,70 @@
+TUTORIAL DE INSTALAÇÃO
+
+1 PRECISA DE UM DOMINIO  ( escolha seu dominio )
+2 PRECISA DE UMA CONTA NO CLOUDFLARE ( para agregar seu dominio )
+3 PRECISA DE UM VPS SÓ PARA OS JOGOS ( ACONSELHO KVM 2 OU 4 DA HOSTINGER.COM.BR )
+
+
+
+PRIMEIRA ETAPA :
+
+PREPARAR O VPS NA HOSTINGER, SERVIDOR BR, SISTEMA OPERACIONAL ( Ubuntu 20.04 64bit )
+
+INSTALAR O Ubuntu 20.04 64bit sem solftware nenhum, instalar somente o software ''CRU'' !
+
+depois acessar o VPS, por SSH aconselho o  PUTTY, colocar o IP do seu servidor no putty, acessar o login e senha,
+depois de acessar o putty instalar o AAPANEL ( basta acessar o site do aapanel https://www.aapanel.com/new/index.html clicar em free install )
+
+Copiar o comando de instalação e colar no putty 
+
+URL=https://www.aapanel.com/script/install_6.0_en.sh && if [ -f /usr/bin/curl ];then curl -ksSO "$URL" ;else wget --no-check-certificate -O install_6.0_en.sh "$URL";fi;bash install_6.0_en.sh aapanel
+
+
+copiar o comando inteiro e colar no putty /\
+
+
+aguardar ate o final da instalação, no final vai gerar um login, senha e o link de acesso ao AAPANEL
+
+geralmente fica assim :
+
+aaPanel Internet Address: https://2a02:4780:14:c6de::1:27968/6bdd93a9
+aaPanel Internal Address: https://89.127.312.149:27968/6bdd93a9
+username: ykr1213
+password: 3b2e67ff
+
+
+acessar pelo endereço https://89.127.312.149:27968/6bdd93a9
+entrar com login e senha fornecidos 
+
+
+instalar MYSQL 8.0, NODEJS, PM2 MANAGER, REDIS SERVER, APACHE, phpMyAdmin 
+
+
+depois de tudo instalado, vai no phpmyadmin importar a DATABASE!
+
+depois de importar a database inserir o agente na dabatase, abre a tabela ''AGENTS''
+
+Insira  agenttoken, secretkey você pode gerar aqui -> https://www.uuidgenerator.net/version4
+
+
+
+Feito isso, 
+
+volte no AAPANEL acesse WEBSITES -> NODE PROJECT,  ADD NODE PROJECT 
+
+procure a pasta apihercules, em run opts selecione START
+
+ssl -> selecione o ssl lets encrypt 
+
+tanto pro dominio quanto pra API
+
+
+
+abre a pasta APIHERCULES,  CONTROLLETS -> APICONTROOLERS.JS e edite o arquivo procure pelo dominio e subistitua pelo seu!
+
+
+starte o projeto no node, 
+
+agora volte no cloudflare aponte o dominio e o subminio api.dominio...  para o ip do seu servidor 
+
+e pronto ;)
